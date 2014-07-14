@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="uec_media_pdf.form.processor.default.class">UEC\MediaPdfBundle\Form\FormProcessor</parameter>
+        <parameter key="uec_media_pdf.form.media.class">UEC\MediaPdfBundle\Form\Type\MediaFormType</parameter>
+        <parameter key="uec_media_pdf.form.media_pdf.class">UEC\MediaPdfBundle\Form\Type\MediaPdfFormType</parameter>
+    </parameters>
+
+    <services>
+        <service id="uec_media_pdf.form.processor.default" class="%uec_media_pdf.form.processor.default.class%" />
+        <service id="uec_media_pdf.form.media" class="%uec_media_pdf.form.media.class%" parent="uec_media.form.base">
+            <tag name="form.type" alias="uec_media_pdf_form_media" />
+        </service>
+        <service id="uec_media_pdf.form.media_pdf" class="%uec_media_pdf.form.media_pdf.class%">
+            <argument>%uec_media_pdf.model.pdf.class%</argument>
+            <tag name="form.type" alias="uec_media_pdf_form" />
+        </service>
+    </services>
+</container>

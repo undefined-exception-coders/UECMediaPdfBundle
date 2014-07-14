@@ -1,0 +1,31 @@
+
+{
+    "name": "undefined-exception-coders/media-pdf-bundle",
+    "description": "The MediaPdfBundle adds to the MediaBundle a provider for uploading pdf",
+    "type": "symfony-bundle",
+    "keywords": [
+        "symfony2","media","upload","provider","pdf","framework"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/undefined-exception-coders/UECMediaPdfBundle",
+    "authors": [
+        {
+            "name": "Damiano Ciarla",
+            "email": "damiano.ciarla@gmail.com",
+            "homepage": "http://www.damianociarla.it/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "symfony/symfony": "2.3.*",
+        "undefined-exception-coders/media-bundle": "dev-master"
+    },
+    "suggest": {
+        "thiagoalessio/tesseract_ocr": "Extract text from image",
+        "php-xpdf/php-xpdf": "Extract text from PDF"
+    },
+    "autoload": {
+        "psr-0": { "UEC\\MediaPdfBundle": "" }
+    },
+    "target-dir": "UEC/MediaPdfBundle"
+}
