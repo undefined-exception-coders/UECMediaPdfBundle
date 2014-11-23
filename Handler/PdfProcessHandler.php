@@ -58,7 +58,10 @@ class PdfProcessHandler
         $numberOfPages = $this->pdfParser->getNumberOfPages($filePath);
 
         $extractDir = pathinfo($filePath, PATHINFO_DIRNAME).'/images/'.$filename;
-        mkdir($extractDir, 0777, true);
+
+        if (!is_dir($extractDir)) {
+            mkdir($extractDir, 0777, true);
+        }
 
         $limit = null === $this->extractLimit
             ? $numberOfPages
@@ -77,10 +80,14 @@ class PdfProcessHandler
             $content = null;
 
             if (null !== $this->OCR) {
-                if ($this->OCR instanceof OCRImageInterface) {
-                    $content = $this->OCR->getContentFromImg($imagePath);
-                } elseif ($this->OCR instanceof OCRPdfInterface) {
-                    $content = $this->OCR->getContentFromFile($filePath, $pageNumber, $pageNumber);
+                try {
+                    if ($this->OCR instanceof OCRImageInterface) {
+                        $content = $this->OCR->getContentFromImg($imagePath);
+                    } elseif ($this->OCR instanceof OCRPdfInterface) {
+                        $content = $this->OCR->getContentFromFile($filePath, $pageNumber, $pageNumber);
+                    }
+                } catch (\Exception $e) {
+                    $content = null;
                 }
             }
 
