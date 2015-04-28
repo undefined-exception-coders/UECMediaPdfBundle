@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "php": ">=5.3",
-        "symfony/symfony": "2.3.*",
-        "undefined-exception-coders/media-bundle": "dev-master"
+      "php": ">=5.3",
+      "symfony/symfony": "~2.3",
+      "undefined-exception-coders/media-bundle": "dev-master"
     },
     "suggest": {
         "thiagoalessio/tesseract_ocr": "Extract text from image",
