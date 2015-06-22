@@ -72,10 +72,12 @@ class MediaPdfManager extends MediaProviderManager
     /**
      * {@inheritdoc}
      */
-    protected function doSaveMediaProvider(MediaProviderInterface $mediaProvider)
+    protected function doSaveMediaProvider(MediaProviderInterface $mediaProvider, $andFlush = true)
     {
         $this->em->persist($mediaProvider);
-        $this->em->flush();
+        if ($andFlush) {
+            $this->em->flush();
+        }
     }
 
     /**
